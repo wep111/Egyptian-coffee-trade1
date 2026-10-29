@@ -1321,7 +1321,7 @@ export default function App() {
       <div
         dir="ltr"
         title={activeAudioTitle}
-        className={`fixed bottom-20 left-3 sm:bottom-6 sm:left-6 z-40 rounded-full px-2 py-1.5 shadow-lg backdrop-blur-md border bg-white/95 text-[#111111] border-black/15 hover:border-black/35 transition-all duration-300 flex items-center gap-1 select-none ${
+        className={`fixed bottom-20 left-3 sm:bottom-20 sm:left-6 z-50 rounded-full px-2 py-1.5 shadow-lg backdrop-blur-md border bg-white/95 text-[#111111] border-black/15 hover:border-black/35 transition-all duration-300 flex items-center gap-1 select-none ${
           isPastHero
             ? 'opacity-100 translate-y-0 pointer-events-auto'
             : 'opacity-0 translate-y-4 pointer-events-none'
