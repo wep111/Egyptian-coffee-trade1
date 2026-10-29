@@ -1,0 +1,786 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Readex Pro", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Gates warm-greige hero tokens (scoped to Hero) */
+  --color-bg: #a9a29a;
+  --color-haze: #b9b2a9;
+  --color-ink: #18181b;
+  --color-ink-strong: #111111;
+  --color-muted: #52525b;
+  --color-line: rgba(17, 17, 17, 0.1);
+}
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #fafafa;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-solid: #ffffff;
+  --line: rgba(17, 17, 17, 0.1);
+  --text: #111111;
+  --muted: #52525b;
+  --accent: #950101;
+  --accent-soft: rgba(149, 1, 1, 0.06);
+  color-scheme: light;
+}
+
+/* Vibrant Multi-Color Small Icons Across the Platform */
+svg.lucide-coffee {
+  color: #b45309 !important;
+}
+svg.lucide-flask-conical {
+  color: #7c3aed !important;
+}
+svg.lucide-book-open {
+  color: #2563eb !important;
+}
+svg.lucide-shopping-bag {
+  color: #e11d48 !important;
+}
+svg.lucide-store {
+  color: #059669 !important;
+}
+svg.lucide-layers {
+  color: #9333ea !important;
+}
+svg.lucide-graduation-cap {
+  color: #ea580c !important;
+}
+svg.lucide-newspaper {
+  color: #0d9488 !important;
+}
+svg.lucide-search {
+  color: #d97706 !important;
+}
+svg.lucide-tag {
+  color: #16a34a !important;
+}
+svg.lucide-calendar {
+  color: #0284c7 !important;
+}
+svg.lucide-file-text {
+  color: #4f46e5 !important;
+}
+svg.lucide-package {
+  color: #d97706 !important;
+}
+svg.lucide-shield-check {
+  color: #059669 !important;
+}
+svg.lucide-lock {
+  color: #d97706 !important;
+}
+svg.lucide-clock {
+  color: #ea580c !important;
+}
+svg.lucide-check-circle-2,
+svg.lucide-check {
+  color: #059669 !important;
+}
+svg.lucide-x-circle,
+svg.lucide-trash-2,
+svg.lucide-alert-circle {
+  color: #dc2626 !important;
+}
+svg.lucide-star {
+  color: #f59e0b !important;
+}
+svg.lucide-share-2,
+svg.lucide-send {
+  color: #2563eb !important;
+}
+svg.lucide-upload,
+svg.lucide-download {
+  color: #059669 !important;
+}
+svg.lucide-copy {
+  color: #950101 !important;
+}
+svg.lucide-wallet {
+  color: #059669 !important;
+}
+svg.lucide-landmark {
+  color: #2563eb !important;
+}
+svg.lucide-bitcoin {
+  color: #f59e0b !important;
+}
+svg.lucide-plus {
+  color: #16a34a !important;
+}
+svg.lucide-refresh-cw {
+  color: #0284c7 !important;
+}
+svg.lucide-arrow-up-left,
+svg.lucide-arrow-up-right,
+svg.lucide-chevron-left,
+svg.lucide-chevron-right,
+svg.lucide-chevron-down {
+  color: #950101 !important;
+}
+svg.lucide-layout-grid,
+svg.lucide-grid-3x3,
+svg.lucide-network {
+  color: #7c3aed !important;
+}
+svg.lucide-message-circle {
+  color: #16a34a !important;
+}
+svg.lucide-home {
+  color: #950101 !important;
+}
+svg.lucide-info {
+  color: #0284c7 !important;
+}
+
+/* Bright high-contrast icon colors when inside dark .btn-primary buttons */
+.btn-primary svg.lucide-flask-conical,
+.btn-primary svg.lucide-search,
+.btn-primary svg.lucide-plus {
+  color: #fbbf24 !important;
+}
+.btn-primary svg.lucide-arrow-up-left,
+.btn-primary svg.lucide-arrow-up-right,
+.btn-primary svg.lucide-message-circle {
+  color: #34d399 !important;
+}
+#home svg.lucide-layers {
+  color: #fcd34d !important;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: #ffffff;
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.75;
+    letter-spacing: -0.005em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: rgba(17, 17, 17, 0.12);
+    color: #111111;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-display {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Crisp White Background with Transparent Black Drawn Pharaonic Line-Art Pattern */
+.bg-coffee-sketch,
+section:not(#home) {
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cg fill='none' stroke='%23000000' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round' stroke-opacity='0.065'%3E%3C!-- Ankh (Key of Life / مفتاح الحياة) --%3E%3Cpath d='M58 58c-11 0-18-9-18-20 0-12 8-22 18-22s18 10 18 22c0 11-7 20-18 20Z'/%3E%3Cpath d='M58 53c-7 0-12-6-12-15 0-8 5-15 12-15s12 7 12 15c0 9-5 15-12 15Z'/%3E%3Cpath d='M36 58h44M36 63h44M55 58v46h6V58M49 104h18'/%3E%3C!-- Eye of Horus (Wedjat / عين حورس) --%3E%3Cpath d='M176 42c24-12 56-12 82-2'/%3E%3Cpath d='M180 56c20-13 48-13 72 0-22 13-50 13-72 0Z'/%3E%3Ccircle cx='216' cy='56' r='8'/%3E%3Ccircle cx='216' cy='56' r='3' fill='%23000000' fill-opacity='0.065'/%3E%3Cpath d='M252 56l20-3M214 63v22l-6 8'/%3E%3Cpath d='M224 62c6 14 2 28-10 32-7 2-12-3-9-9 2-4 7-3 8 1'/%3E%3C!-- Giza Pyramids & Winged Sun Disk (الأهرامات وقرص الشمس المجنح) --%3E%3Cpath d='M110 178l44-62 44 62H110Z'/%3E%3Cpath d='M154 116l-14 62'/%3E%3Cpath d='M78 178l30-42 30 42H78Z'/%3E%3Cpath d='M184 178l24-34 24 34h-48Z'/%3E%3Ccircle cx='154' cy='96' r='8'/%3E%3Cpath d='M146 96c-14-6-28-4-40 4 12 4 26 4 40-1M162 96c14-6 28-4 40 4-12 4-26 4-40-1'/%3E%3C!-- Sacred Egyptian Lotus (زهرة اللوتس الفرعونية) --%3E%3Cpath d='M62 266c0-26 14-48 14-48s14 22 14 48c-9 4-19 4-28 0Z'/%3E%3Cpath d='M62 266c-16-8-26-26-28-42 16 4 26 18 28 42Z'/%3E%3Cpath d='M90 266c16-8 26-26 28-42-16 4-26 18-28 42Z'/%3E%3Cpath d='M62 266c-22-2-36-14-42-28 16 0 30 10 42 28Z'/%3E%3Cpath d='M90 266c22-2 36-14 42-28-16 0-30 10-42 28Z'/%3E%3Cpath d='M76 268v32M56 284h40'/%3E%3C!-- Royal Pharaonic Cartouche & Hieroglyphs (خرطوش ملكي فرعوني) --%3E%3Crect x='232' y='198' width='44' height='84' rx='22'/%3E%3Crect x='237' y='203' width='34' height='74' rx='17'/%3E%3Cpath d='M226 288h56M238 282v6M270 282v6'/%3E%3Ccircle cx='254' cy='220' r='6'/%3E%3Cpath d='M244 238h20M246 244h16M254 252v16M248 258h12'/%3E%3C!-- Sacred Scarab / Feather of Maat Accent --%3E%3Cpath d='M160 284c0-18 8-34 20-40 4 14-2 32-20 40Z'/%3E%3Cpath d='M154 292l26-48'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 320px 320px;
+}
+
+/* Soft scrim so white headline and lower copy stay legible over the bright cloud frame without muddying the palette */
+.hero-scrim {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(128, 120, 110, 0.55) 0%,
+      rgba(128, 120, 110, 0.32) 38%,
+      rgba(128, 120, 110, 0.08) 68%,
+      rgba(128, 120, 110, 0) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(150, 142, 132, 0.25) 0%,
+      rgba(150, 142, 132, 0.05) 45%,
+      rgba(138, 130, 120, 0.38) 100%
+    );
+}
+
+[dir="rtl"] .hero-scrim {
+  background:
+    linear-gradient(
+      270deg,
+      rgba(128, 120, 110, 0.58) 0%,
+      rgba(128, 120, 110, 0.34) 40%,
+      rgba(128, 120, 110, 0.1) 70%,
+      rgba(128, 120, 110, 0) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(150, 142, 132, 0.25) 0%,
+      rgba(150, 142, 132, 0.05) 45%,
+      rgba(138, 130, 120, 0.42) 100%
+    );
+}
+
+/* Subtle top wash so the white nav links read cleanly against the upper frame */
+.hero-topwash {
+  background: linear-gradient(
+    180deg,
+    rgba(120, 112, 102, 0.42) 0%,
+    rgba(120, 112, 102, 0) 100%
+  );
+}
+
+/* Respect reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+.ltr-num {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Crisp Editorial White Card Surface */
+.surface-card,
+.glass-card {
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 10px 28px -10px rgba(0, 0, 0, 0.06);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.surface-card:hover,
+.glass-card:hover {
+  border-color: rgba(17, 17, 17, 0.22);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 14px 32px -10px rgba(0, 0, 0, 0.09);
+}
+
+/* ==========================================================================
+   Standard Clean Buttons & Pills (for general UI actions, filters, etc.)
+   ========================================================================== */
+.btn-primary {
+  background-color: #111111;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid #111111;
+  padding: 10px 20px;
+  transition: all 180ms ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: #27272a;
+  border-color: #27272a;
+  color: #ffffff;
+}
+
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-secondary,
+.btn-glass {
+  background-color: transparent;
+  color: #111111;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid rgba(17, 17, 17, 0.2);
+  padding: 10px 20px;
+  transition: all 180ms ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-secondary:hover,
+.btn-glass:hover {
+  background-color: rgba(17, 17, 17, 0.04);
+  border-color: #111111;
+  color: #111111;
+}
+
+.btn-secondary.p-0,
+.btn-glass.p-0 {
+  padding: 0 !important;
+}
+
+/* High-Visibility Modal Close Button (Light background + clear border + contrasting icon) */
+.modal-close-btn {
+  background-color: #e2e8f0 !important;
+  border: 1.5px solid #64748b !important;
+  color: #0f172a !important;
+  border-radius: 10px;
+  padding: 7px 13px !important;
+  font-size: 12.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 180ms ease;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+  flex-shrink: 0;
+}
+
+.modal-close-btn svg,
+.modal-close-btn svg.lucide-x {
+  color: #0f172a !important;
+  stroke: #0f172a !important;
+  transition: all 180ms ease;
+}
+
+.modal-close-btn:hover {
+  background-color: #1e293b !important;
+  border-color: #0f172a !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+}
+
+.modal-close-btn:hover svg,
+.modal-close-btn:hover svg.lucide-x {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+.chip-pill {
+  border-radius: 8px;
+  border: 1px solid rgba(17, 17, 17, 0.14);
+  background-color: #ffffff;
+  color: #111111;
+  padding: 7px 14px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 180ms ease;
+  cursor: pointer;
+}
+
+.chip-pill:hover {
+  border-color: #111111;
+  background-color: rgba(17, 17, 17, 0.03);
+}
+
+.chip-pill-active {
+  border-radius: 8px;
+  border: 1.5px solid #111111;
+  background-color: rgba(17, 17, 17, 0.06);
+  color: #111111;
+  padding: 7px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Uiverse.io by MuhammadHasann — Botanical Vine Buttons ONLY for
+   "متجرنا" (Our Store) & "زر الشراء" (Buy / Purchase Buttons)
+   ========================================================================== */
+.uiverse-btn,
+.shop-btn {
+  position: relative;
+  padding: 11px 32px;
+  background: #fec195;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: #181818;
+  border: 1px solid #fec195;
+  border-radius: 8px;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2));
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  overflow: visible;
+  z-index: 1;
+}
+
+.shop-btn span {
+  display: inline-block;
+  margin-inline-start: 0.35em;
+  transition: all 0.3s ease-in-out;
+}
+
+.shop-btn svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Varied Colors for Store & Purchase Uiverse Buttons */
+.uiverse-btn[data-uiverse-color="1"],
+.shop-btn[data-uiverse-color="1"] {
+  background: #fec195;
+  border-color: #fec195;
+}
+.uiverse-btn[data-uiverse-color="2"],
+.shop-btn[data-uiverse-color="2"] {
+  background: #ffd69c;
+  border-color: #ffd69c;
+}
+.uiverse-btn[data-uiverse-color="3"],
+.shop-btn[data-uiverse-color="3"] {
+  background: #edb1b1;
+  border-color: #edb1b1;
+}
+.uiverse-btn[data-uiverse-color="4"],
+.shop-btn[data-uiverse-color="4"] {
+  background: #e0c297;
+  border-color: #e0c297;
+}
+.uiverse-btn[data-uiverse-color="5"],
+.shop-btn[data-uiverse-color="5"] {
+  background: #9a9efb;
+  border-color: #9a9efb;
+}
+.uiverse-btn[data-uiverse-color="6"],
+.shop-btn[data-uiverse-color="6"] {
+  background: #b58ff4;
+  border-color: #b58ff4;
+}
+.uiverse-btn[data-uiverse-color="7"],
+.shop-btn[data-uiverse-color="7"] {
+  background: #ffb4e0;
+  border-color: #ffb4e0;
+}
+.uiverse-btn[data-uiverse-color="8"],
+.shop-btn[data-uiverse-color="8"] {
+  background: #a3ffde;
+  border-color: #a3ffde;
+}
+
+.uiverse-btn:hover,
+.shop-btn:hover {
+  border: 1px solid #f3b182;
+  color: #181818;
+  background: linear-gradient(
+    85deg,
+    #fec195,
+    #fcc196,
+    #fabd92,
+    #fac097,
+    #fac39c
+  );
+  animation: wind 2s ease-in-out infinite;
+}
+
+.uiverse-btn[data-uiverse-color="2"]:hover,
+.shop-btn[data-uiverse-color="2"]:hover {
+  border-color: #f0be78;
+  background: linear-gradient(85deg, #ffd69c, #fcca85, #f9c47a, #ffd08f, #ffdaab);
+}
+
+.uiverse-btn[data-uiverse-color="3"]:hover,
+.shop-btn[data-uiverse-color="3"]:hover {
+  border-color: #df9898;
+  background: linear-gradient(85deg, #edb1b1, #e8a2a2, #e59a9a, #eba8a8, #f2bcbc);
+}
+
+.uiverse-btn[data-uiverse-color="4"]:hover,
+.shop-btn[data-uiverse-color="4"]:hover {
+  border-color: #cfb082;
+  background: linear-gradient(85deg, #e0c297, #dab887, #d6b27e, #ddc092, #e6cca5);
+}
+
+.uiverse-btn[data-uiverse-color="5"]:hover,
+.shop-btn[data-uiverse-color="5"]:hover {
+  border-color: #8287f5;
+  background: linear-gradient(85deg, #9a9efb, #8b90f9, #8388f7, #9297fa, #a8acfc);
+}
+
+.uiverse-btn[data-uiverse-color="6"]:hover,
+.shop-btn[data-uiverse-color="6"]:hover {
+  border-color: #a176ec;
+  background: linear-gradient(85deg, #b58ff4, #aa7ff1, #a375ef, #b088f3, #c09ff6);
+}
+
+.uiverse-btn[data-uiverse-color="7"]:hover,
+.shop-btn[data-uiverse-color="7"]:hover {
+  border-color: #f598cf;
+  background: linear-gradient(85deg, #ffb4e0, #fca3d7, #fa9ad2, #ffaddd, #ffc2e6);
+}
+
+.uiverse-btn[data-uiverse-color="8"]:hover,
+.shop-btn[data-uiverse-color="8"]:hover {
+  border-color: #84f2ca;
+  background: linear-gradient(85deg, #a3ffde, #8efad3, #84f7ce, #99fcdb, #b5ffe4);
+}
+
+.uiverse-btn:disabled,
+.shop-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  animation: none;
+}
+
+/* Botanical Vine Icons (.icon-1, .icon-2, .icon-3) from MuhammadHasann */
+.uiverse-vines-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.icon-1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  transform-origin: 0 0;
+  transform: rotate(10deg);
+  transition: all 0.5s ease-in-out;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
+  pointer-events: none;
+  animation: slay-1 3s cubic-bezier(0.52, 0, 0.58, 1) infinite;
+}
+
+.uiverse-btn:hover .icon-1,
+.shop-btn:hover .icon-1 {
+  animation: slay-1 2.2s cubic-bezier(0.52, 0, 0.58, 1) infinite;
+  transform: rotate(10deg);
+}
+
+.icon-2 {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  width: 12px;
+  transform-origin: 50% 0;
+  transform: rotate(10deg);
+  transition: all 1s ease-in-out;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+  animation: slay-2 3s cubic-bezier(0.52, 0, 0.58, 1) 0.4s infinite;
+}
+
+.uiverse-btn:hover .icon-2,
+.shop-btn:hover .icon-2 {
+  animation: slay-2 2.2s cubic-bezier(0.52, 0, 0.58, 1) 0.2s infinite;
+  transform: rotate(0);
+}
+
+.icon-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  transform-origin: 50% 0;
+  transform: rotate(-5deg);
+  transition: all 1s ease-in-out;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+  animation: slay-3 2.4s cubic-bezier(0.52, 0, 0.58, 1) 0.2s infinite;
+}
+
+.uiverse-btn:hover .icon-3,
+.shop-btn:hover .icon-3 {
+  animation: slay-3 1.8s cubic-bezier(0.52, 0, 0.58, 1) infinite;
+  transform: rotate(0);
+}
+
+.fil0 {
+  fill: #181818;
+}
+
+/* Transparent Uiverse Button Variant (keeps botanical vines & sway animation without solid color) */
+.uiverse-btn.uiverse-btn-transparent {
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.uiverse-btn.uiverse-btn-transparent:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.uiverse-btn.uiverse-btn-transparent .fil0 {
+  fill: rgba(255, 255, 255, 0.85) !important;
+}
+
+@media (max-width: 640px) {
+  .uiverse-btn.uiverse-btn-transparent {
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+  .uiverse-btn.uiverse-btn-transparent .icon-1 {
+    width: 18px;
+  }
+  .uiverse-btn.uiverse-btn-transparent .icon-2 {
+    left: 16px;
+    width: 9px;
+  }
+  .uiverse-btn.uiverse-btn-transparent .icon-3 {
+    width: 13px;
+  }
+}
+
+@keyframes musicBarBounce {
+  0%, 100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.music-bar-1 {
+  animation: musicBarBounce 0.8s ease-in-out infinite;
+  transform-origin: bottom;
+}
+.music-bar-2 {
+  animation: musicBarBounce 0.6s ease-in-out 0.2s infinite;
+  transform-origin: bottom;
+}
+.music-bar-3 {
+  animation: musicBarBounce 0.9s ease-in-out 0.4s infinite;
+  transform-origin: bottom;
+}
+
+@keyframes wind {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes slay-1 {
+  0% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes slay-2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes slay-3 {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+/* Clean White Form Input */
+.input-field,
+.input-dark {
+  background-color: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.16);
+  color: #111111;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) inset;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.input-field::placeholder,
+.input-dark::placeholder {
+  color: #71717a;
+}
+
+.input-field:focus,
+.input-dark:focus {
+  outline: none;
+  border-color: #111111;
+  box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.ticker-marquee-track {
+  animation-name: tickerScroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+[dir="rtl"] .ticker-marquee-track {
+  animation-name: tickerScrollRtl;
+}
+
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes tickerScrollRtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+

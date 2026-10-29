@@ -1,0 +1,4378 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "لوحة إدارة تجارة القهوة المصرية API",
+    "description": "API documentation for the **لوحة إدارة تجارة القهوة المصرية** application.\n\n**Authentication:** Most endpoints require the `api_key` header. If using Swagger UI, click the **Authorize** button at the top of the page and enter your API key before trying any endpoint.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://egcoffee.base44.app/api",
+      "description": "API server"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/entities/CoffeePrice": {
+      "get": {
+        "tags": [
+          "Entities - CoffeePrice"
+        ],
+        "summary": "List CoffeePrice records",
+        "operationId": "list_CoffeePrice",
+        "description": "Retrieve a list of CoffeePrice records with optional filtering, sorting, and pagination.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "JSON query filter, e.g. {\"status\":\"active\"}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Maximum number of records to return"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Number of records to skip (pagination)"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Field name to sort by. Prefix with '-' for descending order, e.g. -created_date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CoffeePrice"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entities - CoffeePrice"
+        ],
+        "summary": "Create a CoffeePrice record",
+        "operationId": "create_CoffeePrice",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoffeePrice"
+              },
+              "example": {
+                "name_ar": "Example name_ar",
+                "current_price": 0
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeePrice"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - CoffeePrice"
+        ],
+        "summary": "Delete multiple CoffeePrice records",
+        "operationId": "delete_many_CoffeePrice",
+        "description": "**Warning:** Passing an empty `{}` query will delete ALL records in this entity.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Query filter to match records to delete"
+              },
+              "example": {
+                "name_ar": "Example name_ar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeePrice/bulk": {
+      "post": {
+        "tags": [
+          "Entities - CoffeePrice"
+        ],
+        "summary": "Bulk create CoffeePrice records",
+        "operationId": "bulk_create_CoffeePrice",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CoffeePrice"
+                }
+              },
+              "example": [
+                {
+                  "name_ar": "Example name_ar",
+                  "current_price": 0
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of created records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CoffeePrice"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - CoffeePrice"
+        ],
+        "summary": "Bulk update CoffeePrice records",
+        "operationId": "bulk_update_CoffeePrice",
+        "description": "Each item must include an 'id' field along with the fields to update.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CoffeePrice"
+                }
+              },
+              "example": [
+                {
+                  "id": "<record_id>",
+                  "name_ar": "Example name_ar",
+                  "current_price": 0
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of updated records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CoffeePrice"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeePrice/update-many": {
+      "patch": {
+        "tags": [
+          "Entities - CoffeePrice"
+        ],
+        "summary": "Update many CoffeePrice records by query",
+        "operationId": "update_many_CoffeePrice",
+        "description": "Update multiple records matching a query filter. Supports MongoDB update operators ($set, $inc, $push, $pull).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query",
+                  "data"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "object",
+                    "description": "Query filter to match records"
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "Update operations to apply"
+                  }
+                }
+              },
+              "example": {
+                "query": {
+                  "name_ar": "Example name_ar"
+                },
+                "data": {
+                  "$set": {
+                    "name_ar": "Example name_ar"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "updated": {
+                      "type": "integer"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeePrice/{CoffeePrice_id}": {
+      "get": {
+        "tags": [
+          "Entities - CoffeePrice"
+        ],
+        "summary": "Get a CoffeePrice record by ID",
+        "operationId": "get_CoffeePrice",
+        "parameters": [
+          {
+            "name": "CoffeePrice_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeePrice"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - CoffeePrice"
+        ],
+        "summary": "Update a CoffeePrice record",
+        "operationId": "update_CoffeePrice",
+        "parameters": [
+          {
+            "name": "CoffeePrice_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoffeePrice"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeePrice"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - CoffeePrice"
+        ],
+        "summary": "Delete a CoffeePrice record",
+        "operationId": "delete_CoffeePrice",
+        "description": "Soft-deletes the record. Use the restore endpoint to undo.",
+        "parameters": [
+          {
+            "name": "CoffeePrice_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeePrice/{CoffeePrice_id}/restore": {
+      "put": {
+        "tags": [
+          "Entities - CoffeePrice"
+        ],
+        "summary": "Restore a deleted CoffeePrice record",
+        "operationId": "restore_CoffeePrice",
+        "parameters": [
+          {
+            "name": "CoffeePrice_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restored record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeePrice"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/PriceHistory": {
+      "get": {
+        "tags": [
+          "Entities - PriceHistory"
+        ],
+        "summary": "List PriceHistory records",
+        "operationId": "list_PriceHistory",
+        "description": "Retrieve a list of PriceHistory records with optional filtering, sorting, and pagination.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "JSON query filter, e.g. {\"status\":\"active\"}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Maximum number of records to return"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Number of records to skip (pagination)"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Field name to sort by. Prefix with '-' for descending order, e.g. -created_date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PriceHistory"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entities - PriceHistory"
+        ],
+        "summary": "Create a PriceHistory record",
+        "operationId": "create_PriceHistory",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceHistory"
+              },
+              "example": {
+                "price_name": "Example price_name",
+                "new_price": 0
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceHistory"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - PriceHistory"
+        ],
+        "summary": "Delete multiple PriceHistory records",
+        "operationId": "delete_many_PriceHistory",
+        "description": "**Warning:** Passing an empty `{}` query will delete ALL records in this entity.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Query filter to match records to delete"
+              },
+              "example": {
+                "price_name": "Example price_name"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/PriceHistory/bulk": {
+      "post": {
+        "tags": [
+          "Entities - PriceHistory"
+        ],
+        "summary": "Bulk create PriceHistory records",
+        "operationId": "bulk_create_PriceHistory",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PriceHistory"
+                }
+              },
+              "example": [
+                {
+                  "price_name": "Example price_name",
+                  "new_price": 0
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of created records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PriceHistory"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - PriceHistory"
+        ],
+        "summary": "Bulk update PriceHistory records",
+        "operationId": "bulk_update_PriceHistory",
+        "description": "Each item must include an 'id' field along with the fields to update.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PriceHistory"
+                }
+              },
+              "example": [
+                {
+                  "id": "<record_id>",
+                  "price_name": "Example price_name",
+                  "new_price": 0
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of updated records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PriceHistory"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/PriceHistory/update-many": {
+      "patch": {
+        "tags": [
+          "Entities - PriceHistory"
+        ],
+        "summary": "Update many PriceHistory records by query",
+        "operationId": "update_many_PriceHistory",
+        "description": "Update multiple records matching a query filter. Supports MongoDB update operators ($set, $inc, $push, $pull).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query",
+                  "data"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "object",
+                    "description": "Query filter to match records"
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "Update operations to apply"
+                  }
+                }
+              },
+              "example": {
+                "query": {
+                  "price_name": "Example price_name"
+                },
+                "data": {
+                  "$set": {
+                    "price_name": "Example price_name"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "updated": {
+                      "type": "integer"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/PriceHistory/{PriceHistory_id}": {
+      "get": {
+        "tags": [
+          "Entities - PriceHistory"
+        ],
+        "summary": "Get a PriceHistory record by ID",
+        "operationId": "get_PriceHistory",
+        "parameters": [
+          {
+            "name": "PriceHistory_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceHistory"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - PriceHistory"
+        ],
+        "summary": "Update a PriceHistory record",
+        "operationId": "update_PriceHistory",
+        "parameters": [
+          {
+            "name": "PriceHistory_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PriceHistory"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceHistory"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - PriceHistory"
+        ],
+        "summary": "Delete a PriceHistory record",
+        "operationId": "delete_PriceHistory",
+        "description": "Soft-deletes the record. Use the restore endpoint to undo.",
+        "parameters": [
+          {
+            "name": "PriceHistory_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/PriceHistory/{PriceHistory_id}/restore": {
+      "put": {
+        "tags": [
+          "Entities - PriceHistory"
+        ],
+        "summary": "Restore a deleted PriceHistory record",
+        "operationId": "restore_PriceHistory",
+        "parameters": [
+          {
+            "name": "PriceHistory_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restored record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PriceHistory"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CatalogItem": {
+      "get": {
+        "tags": [
+          "Entities - CatalogItem"
+        ],
+        "summary": "List CatalogItem records",
+        "operationId": "list_CatalogItem",
+        "description": "Retrieve a list of CatalogItem records with optional filtering, sorting, and pagination.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "JSON query filter, e.g. {\"status\":\"active\"}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Maximum number of records to return"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Number of records to skip (pagination)"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Field name to sort by. Prefix with '-' for descending order, e.g. -created_date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CatalogItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entities - CatalogItem"
+        ],
+        "summary": "Create a CatalogItem record",
+        "operationId": "create_CatalogItem",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CatalogItem"
+              },
+              "example": {
+                "title_ar": "Example title_ar",
+                "price": 0
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogItem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - CatalogItem"
+        ],
+        "summary": "Delete multiple CatalogItem records",
+        "operationId": "delete_many_CatalogItem",
+        "description": "**Warning:** Passing an empty `{}` query will delete ALL records in this entity.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Query filter to match records to delete"
+              },
+              "example": {
+                "title_ar": "Example title_ar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CatalogItem/bulk": {
+      "post": {
+        "tags": [
+          "Entities - CatalogItem"
+        ],
+        "summary": "Bulk create CatalogItem records",
+        "operationId": "bulk_create_CatalogItem",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CatalogItem"
+                }
+              },
+              "example": [
+                {
+                  "title_ar": "Example title_ar",
+                  "price": 0
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of created records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CatalogItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - CatalogItem"
+        ],
+        "summary": "Bulk update CatalogItem records",
+        "operationId": "bulk_update_CatalogItem",
+        "description": "Each item must include an 'id' field along with the fields to update.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CatalogItem"
+                }
+              },
+              "example": [
+                {
+                  "id": "<record_id>",
+                  "title_ar": "Example title_ar",
+                  "price": 0
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of updated records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CatalogItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CatalogItem/update-many": {
+      "patch": {
+        "tags": [
+          "Entities - CatalogItem"
+        ],
+        "summary": "Update many CatalogItem records by query",
+        "operationId": "update_many_CatalogItem",
+        "description": "Update multiple records matching a query filter. Supports MongoDB update operators ($set, $inc, $push, $pull).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query",
+                  "data"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "object",
+                    "description": "Query filter to match records"
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "Update operations to apply"
+                  }
+                }
+              },
+              "example": {
+                "query": {
+                  "title_ar": "Example title_ar"
+                },
+                "data": {
+                  "$set": {
+                    "title_ar": "Example title_ar"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "updated": {
+                      "type": "integer"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CatalogItem/{CatalogItem_id}": {
+      "get": {
+        "tags": [
+          "Entities - CatalogItem"
+        ],
+        "summary": "Get a CatalogItem record by ID",
+        "operationId": "get_CatalogItem",
+        "parameters": [
+          {
+            "name": "CatalogItem_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogItem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - CatalogItem"
+        ],
+        "summary": "Update a CatalogItem record",
+        "operationId": "update_CatalogItem",
+        "parameters": [
+          {
+            "name": "CatalogItem_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CatalogItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogItem"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - CatalogItem"
+        ],
+        "summary": "Delete a CatalogItem record",
+        "operationId": "delete_CatalogItem",
+        "description": "Soft-deletes the record. Use the restore endpoint to undo.",
+        "parameters": [
+          {
+            "name": "CatalogItem_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CatalogItem/{CatalogItem_id}/restore": {
+      "put": {
+        "tags": [
+          "Entities - CatalogItem"
+        ],
+        "summary": "Restore a deleted CatalogItem record",
+        "operationId": "restore_CatalogItem",
+        "parameters": [
+          {
+            "name": "CatalogItem_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restored record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/Order": {
+      "get": {
+        "tags": [
+          "Entities - Order"
+        ],
+        "summary": "List Order records",
+        "operationId": "list_Order",
+        "description": "Retrieve a list of Order records with optional filtering, sorting, and pagination.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "JSON query filter, e.g. {\"status\":\"active\"}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Maximum number of records to return"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Number of records to skip (pagination)"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Field name to sort by. Prefix with '-' for descending order, e.g. -created_date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entities - Order"
+        ],
+        "summary": "Create a Order record",
+        "operationId": "create_Order",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              },
+              "example": {
+                "customer_name": "Example customer_name",
+                "customer_contact": "Example customer_contact"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - Order"
+        ],
+        "summary": "Delete multiple Order records",
+        "operationId": "delete_many_Order",
+        "description": "**Warning:** Passing an empty `{}` query will delete ALL records in this entity.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Query filter to match records to delete"
+              },
+              "example": {
+                "customer_name": "Example customer_name"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/Order/bulk": {
+      "post": {
+        "tags": [
+          "Entities - Order"
+        ],
+        "summary": "Bulk create Order records",
+        "operationId": "bulk_create_Order",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              },
+              "example": [
+                {
+                  "customer_name": "Example customer_name",
+                  "customer_contact": "Example customer_contact"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of created records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - Order"
+        ],
+        "summary": "Bulk update Order records",
+        "operationId": "bulk_update_Order",
+        "description": "Each item must include an 'id' field along with the fields to update.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              },
+              "example": [
+                {
+                  "id": "<record_id>",
+                  "customer_name": "Example customer_name",
+                  "customer_contact": "Example customer_contact"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of updated records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/Order/update-many": {
+      "patch": {
+        "tags": [
+          "Entities - Order"
+        ],
+        "summary": "Update many Order records by query",
+        "operationId": "update_many_Order",
+        "description": "Update multiple records matching a query filter. Supports MongoDB update operators ($set, $inc, $push, $pull).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query",
+                  "data"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "object",
+                    "description": "Query filter to match records"
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "Update operations to apply"
+                  }
+                }
+              },
+              "example": {
+                "query": {
+                  "customer_name": "Example customer_name"
+                },
+                "data": {
+                  "$set": {
+                    "customer_name": "Example customer_name"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "updated": {
+                      "type": "integer"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/Order/{Order_id}": {
+      "get": {
+        "tags": [
+          "Entities - Order"
+        ],
+        "summary": "Get a Order record by ID",
+        "operationId": "get_Order",
+        "parameters": [
+          {
+            "name": "Order_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - Order"
+        ],
+        "summary": "Update a Order record",
+        "operationId": "update_Order",
+        "parameters": [
+          {
+            "name": "Order_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - Order"
+        ],
+        "summary": "Delete a Order record",
+        "operationId": "delete_Order",
+        "description": "Soft-deletes the record. Use the restore endpoint to undo.",
+        "parameters": [
+          {
+            "name": "Order_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/Order/{Order_id}/restore": {
+      "put": {
+        "tags": [
+          "Entities - Order"
+        ],
+        "summary": "Restore a deleted Order record",
+        "operationId": "restore_Order",
+        "parameters": [
+          {
+            "name": "Order_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restored record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeeBean": {
+      "get": {
+        "tags": [
+          "Entities - CoffeeBean"
+        ],
+        "summary": "List CoffeeBean records",
+        "operationId": "list_CoffeeBean",
+        "description": "Retrieve a list of CoffeeBean records with optional filtering, sorting, and pagination.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "JSON query filter, e.g. {\"status\":\"active\"}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Maximum number of records to return"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Number of records to skip (pagination)"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Field name to sort by. Prefix with '-' for descending order, e.g. -created_date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CoffeeBean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entities - CoffeeBean"
+        ],
+        "summary": "Create a CoffeeBean record",
+        "operationId": "create_CoffeeBean",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoffeeBean"
+              },
+              "example": {
+                "name_ar": "Example name_ar",
+                "country_ar": "Example country_ar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeeBean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - CoffeeBean"
+        ],
+        "summary": "Delete multiple CoffeeBean records",
+        "operationId": "delete_many_CoffeeBean",
+        "description": "**Warning:** Passing an empty `{}` query will delete ALL records in this entity.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Query filter to match records to delete"
+              },
+              "example": {
+                "name_ar": "Example name_ar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeeBean/bulk": {
+      "post": {
+        "tags": [
+          "Entities - CoffeeBean"
+        ],
+        "summary": "Bulk create CoffeeBean records",
+        "operationId": "bulk_create_CoffeeBean",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CoffeeBean"
+                }
+              },
+              "example": [
+                {
+                  "name_ar": "Example name_ar",
+                  "country_ar": "Example country_ar"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of created records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CoffeeBean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - CoffeeBean"
+        ],
+        "summary": "Bulk update CoffeeBean records",
+        "operationId": "bulk_update_CoffeeBean",
+        "description": "Each item must include an 'id' field along with the fields to update.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CoffeeBean"
+                }
+              },
+              "example": [
+                {
+                  "id": "<record_id>",
+                  "name_ar": "Example name_ar",
+                  "country_ar": "Example country_ar"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of updated records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CoffeeBean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeeBean/update-many": {
+      "patch": {
+        "tags": [
+          "Entities - CoffeeBean"
+        ],
+        "summary": "Update many CoffeeBean records by query",
+        "operationId": "update_many_CoffeeBean",
+        "description": "Update multiple records matching a query filter. Supports MongoDB update operators ($set, $inc, $push, $pull).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query",
+                  "data"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "object",
+                    "description": "Query filter to match records"
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "Update operations to apply"
+                  }
+                }
+              },
+              "example": {
+                "query": {
+                  "name_ar": "Example name_ar"
+                },
+                "data": {
+                  "$set": {
+                    "name_ar": "Example name_ar"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "updated": {
+                      "type": "integer"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeeBean/{CoffeeBean_id}": {
+      "get": {
+        "tags": [
+          "Entities - CoffeeBean"
+        ],
+        "summary": "Get a CoffeeBean record by ID",
+        "operationId": "get_CoffeeBean",
+        "parameters": [
+          {
+            "name": "CoffeeBean_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeeBean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - CoffeeBean"
+        ],
+        "summary": "Update a CoffeeBean record",
+        "operationId": "update_CoffeeBean",
+        "parameters": [
+          {
+            "name": "CoffeeBean_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoffeeBean"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeeBean"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - CoffeeBean"
+        ],
+        "summary": "Delete a CoffeeBean record",
+        "operationId": "delete_CoffeeBean",
+        "description": "Soft-deletes the record. Use the restore endpoint to undo.",
+        "parameters": [
+          {
+            "name": "CoffeeBean_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeeBean/{CoffeeBean_id}/restore": {
+      "put": {
+        "tags": [
+          "Entities - CoffeeBean"
+        ],
+        "summary": "Restore a deleted CoffeeBean record",
+        "operationId": "restore_CoffeeBean",
+        "parameters": [
+          {
+            "name": "CoffeeBean_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restored record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeeBean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeeBlend": {
+      "get": {
+        "tags": [
+          "Entities - CoffeeBlend"
+        ],
+        "summary": "List CoffeeBlend records",
+        "operationId": "list_CoffeeBlend",
+        "description": "Retrieve a list of CoffeeBlend records with optional filtering, sorting, and pagination.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "JSON query filter, e.g. {\"status\":\"active\"}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Maximum number of records to return"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Number of records to skip (pagination)"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Field name to sort by. Prefix with '-' for descending order, e.g. -created_date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CoffeeBlend"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entities - CoffeeBlend"
+        ],
+        "summary": "Create a CoffeeBlend record",
+        "operationId": "create_CoffeeBlend",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoffeeBlend"
+              },
+              "example": {
+                "blend_number": 0,
+                "name_ar": "Example name_ar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeeBlend"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - CoffeeBlend"
+        ],
+        "summary": "Delete multiple CoffeeBlend records",
+        "operationId": "delete_many_CoffeeBlend",
+        "description": "**Warning:** Passing an empty `{}` query will delete ALL records in this entity.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Query filter to match records to delete"
+              },
+              "example": {
+                "blend_number": 0
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeeBlend/bulk": {
+      "post": {
+        "tags": [
+          "Entities - CoffeeBlend"
+        ],
+        "summary": "Bulk create CoffeeBlend records",
+        "operationId": "bulk_create_CoffeeBlend",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CoffeeBlend"
+                }
+              },
+              "example": [
+                {
+                  "blend_number": 0,
+                  "name_ar": "Example name_ar"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of created records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CoffeeBlend"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - CoffeeBlend"
+        ],
+        "summary": "Bulk update CoffeeBlend records",
+        "operationId": "bulk_update_CoffeeBlend",
+        "description": "Each item must include an 'id' field along with the fields to update.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CoffeeBlend"
+                }
+              },
+              "example": [
+                {
+                  "id": "<record_id>",
+                  "blend_number": 0,
+                  "name_ar": "Example name_ar"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of updated records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CoffeeBlend"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeeBlend/update-many": {
+      "patch": {
+        "tags": [
+          "Entities - CoffeeBlend"
+        ],
+        "summary": "Update many CoffeeBlend records by query",
+        "operationId": "update_many_CoffeeBlend",
+        "description": "Update multiple records matching a query filter. Supports MongoDB update operators ($set, $inc, $push, $pull).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query",
+                  "data"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "object",
+                    "description": "Query filter to match records"
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "Update operations to apply"
+                  }
+                }
+              },
+              "example": {
+                "query": {
+                  "blend_number": 0
+                },
+                "data": {
+                  "$set": {
+                    "blend_number": 0
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "updated": {
+                      "type": "integer"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeeBlend/{CoffeeBlend_id}": {
+      "get": {
+        "tags": [
+          "Entities - CoffeeBlend"
+        ],
+        "summary": "Get a CoffeeBlend record by ID",
+        "operationId": "get_CoffeeBlend",
+        "parameters": [
+          {
+            "name": "CoffeeBlend_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeeBlend"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - CoffeeBlend"
+        ],
+        "summary": "Update a CoffeeBlend record",
+        "operationId": "update_CoffeeBlend",
+        "parameters": [
+          {
+            "name": "CoffeeBlend_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoffeeBlend"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeeBlend"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - CoffeeBlend"
+        ],
+        "summary": "Delete a CoffeeBlend record",
+        "operationId": "delete_CoffeeBlend",
+        "description": "Soft-deletes the record. Use the restore endpoint to undo.",
+        "parameters": [
+          {
+            "name": "CoffeeBlend_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/CoffeeBlend/{CoffeeBlend_id}/restore": {
+      "put": {
+        "tags": [
+          "Entities - CoffeeBlend"
+        ],
+        "summary": "Restore a deleted CoffeeBlend record",
+        "operationId": "restore_CoffeeBlend",
+        "parameters": [
+          {
+            "name": "CoffeeBlend_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restored record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoffeeBlend"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/ArticleCategory": {
+      "get": {
+        "tags": [
+          "Entities - ArticleCategory"
+        ],
+        "summary": "List ArticleCategory records",
+        "operationId": "list_ArticleCategory",
+        "description": "Retrieve a list of ArticleCategory records with optional filtering, sorting, and pagination.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "JSON query filter, e.g. {\"status\":\"active\"}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Maximum number of records to return"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Number of records to skip (pagination)"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Field name to sort by. Prefix with '-' for descending order, e.g. -created_date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArticleCategory"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entities - ArticleCategory"
+        ],
+        "summary": "Create a ArticleCategory record",
+        "operationId": "create_ArticleCategory",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArticleCategory"
+              },
+              "example": {
+                "name_ar": "Example name_ar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleCategory"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - ArticleCategory"
+        ],
+        "summary": "Delete multiple ArticleCategory records",
+        "operationId": "delete_many_ArticleCategory",
+        "description": "**Warning:** Passing an empty `{}` query will delete ALL records in this entity.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Query filter to match records to delete"
+              },
+              "example": {
+                "name_ar": "Example name_ar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/ArticleCategory/bulk": {
+      "post": {
+        "tags": [
+          "Entities - ArticleCategory"
+        ],
+        "summary": "Bulk create ArticleCategory records",
+        "operationId": "bulk_create_ArticleCategory",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ArticleCategory"
+                }
+              },
+              "example": [
+                {
+                  "name_ar": "Example name_ar"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of created records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArticleCategory"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - ArticleCategory"
+        ],
+        "summary": "Bulk update ArticleCategory records",
+        "operationId": "bulk_update_ArticleCategory",
+        "description": "Each item must include an 'id' field along with the fields to update.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ArticleCategory"
+                }
+              },
+              "example": [
+                {
+                  "id": "<record_id>",
+                  "name_ar": "Example name_ar"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of updated records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ArticleCategory"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/ArticleCategory/update-many": {
+      "patch": {
+        "tags": [
+          "Entities - ArticleCategory"
+        ],
+        "summary": "Update many ArticleCategory records by query",
+        "operationId": "update_many_ArticleCategory",
+        "description": "Update multiple records matching a query filter. Supports MongoDB update operators ($set, $inc, $push, $pull).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query",
+                  "data"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "object",
+                    "description": "Query filter to match records"
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "Update operations to apply"
+                  }
+                }
+              },
+              "example": {
+                "query": {
+                  "name_ar": "Example name_ar"
+                },
+                "data": {
+                  "$set": {
+                    "name_ar": "Example name_ar"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "updated": {
+                      "type": "integer"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/ArticleCategory/{ArticleCategory_id}": {
+      "get": {
+        "tags": [
+          "Entities - ArticleCategory"
+        ],
+        "summary": "Get a ArticleCategory record by ID",
+        "operationId": "get_ArticleCategory",
+        "parameters": [
+          {
+            "name": "ArticleCategory_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleCategory"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - ArticleCategory"
+        ],
+        "summary": "Update a ArticleCategory record",
+        "operationId": "update_ArticleCategory",
+        "parameters": [
+          {
+            "name": "ArticleCategory_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ArticleCategory"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleCategory"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - ArticleCategory"
+        ],
+        "summary": "Delete a ArticleCategory record",
+        "operationId": "delete_ArticleCategory",
+        "description": "Soft-deletes the record. Use the restore endpoint to undo.",
+        "parameters": [
+          {
+            "name": "ArticleCategory_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/ArticleCategory/{ArticleCategory_id}/restore": {
+      "put": {
+        "tags": [
+          "Entities - ArticleCategory"
+        ],
+        "summary": "Restore a deleted ArticleCategory record",
+        "operationId": "restore_ArticleCategory",
+        "parameters": [
+          {
+            "name": "ArticleCategory_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restored record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArticleCategory"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/Article": {
+      "get": {
+        "tags": [
+          "Entities - Article"
+        ],
+        "summary": "List Article records",
+        "operationId": "list_Article",
+        "description": "Retrieve a list of Article records with optional filtering, sorting, and pagination.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "JSON query filter, e.g. {\"status\":\"active\"}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Maximum number of records to return"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Number of records to skip (pagination)"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Field name to sort by. Prefix with '-' for descending order, e.g. -created_date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Article"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entities - Article"
+        ],
+        "summary": "Create a Article record",
+        "operationId": "create_Article",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Article"
+              },
+              "example": {
+                "title_ar": "Example title_ar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - Article"
+        ],
+        "summary": "Delete multiple Article records",
+        "operationId": "delete_many_Article",
+        "description": "**Warning:** Passing an empty `{}` query will delete ALL records in this entity.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Query filter to match records to delete"
+              },
+              "example": {
+                "title_ar": "Example title_ar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "deleted": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/Article/bulk": {
+      "post": {
+        "tags": [
+          "Entities - Article"
+        ],
+        "summary": "Bulk create Article records",
+        "operationId": "bulk_create_Article",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              },
+              "example": [
+                {
+                  "title_ar": "Example title_ar"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of created records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Article"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - Article"
+        ],
+        "summary": "Bulk update Article records",
+        "operationId": "bulk_update_Article",
+        "description": "Each item must include an 'id' field along with the fields to update.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              },
+              "example": [
+                {
+                  "id": "<record_id>",
+                  "title_ar": "Example title_ar"
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of updated records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Article"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/Article/update-many": {
+      "patch": {
+        "tags": [
+          "Entities - Article"
+        ],
+        "summary": "Update many Article records by query",
+        "operationId": "update_many_Article",
+        "description": "Update multiple records matching a query filter. Supports MongoDB update operators ($set, $inc, $push, $pull).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "query",
+                  "data"
+                ],
+                "properties": {
+                  "query": {
+                    "type": "object",
+                    "description": "Query filter to match records"
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "Update operations to apply"
+                  }
+                }
+              },
+              "example": {
+                "query": {
+                  "title_ar": "Example title_ar"
+                },
+                "data": {
+                  "$set": {
+                    "title_ar": "Example title_ar"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Update result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "updated": {
+                      "type": "integer"
+                    },
+                    "has_more": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/Article/{Article_id}": {
+      "get": {
+        "tags": [
+          "Entities - Article"
+        ],
+        "summary": "Get a Article record by ID",
+        "operationId": "get_Article",
+        "parameters": [
+          {
+            "name": "Article_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - Article"
+        ],
+        "summary": "Update a Article record",
+        "operationId": "update_Article",
+        "parameters": [
+          {
+            "name": "Article_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Article"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - Article"
+        ],
+        "summary": "Delete a Article record",
+        "operationId": "delete_Article",
+        "description": "Soft-deletes the record. Use the restore endpoint to undo.",
+        "parameters": [
+          {
+            "name": "Article_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/Article/{Article_id}/restore": {
+      "put": {
+        "tags": [
+          "Entities - Article"
+        ],
+        "summary": "Restore a deleted Article record",
+        "operationId": "restore_Article",
+        "parameters": [
+          {
+            "name": "Article_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restored record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Article"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/User": {
+      "get": {
+        "tags": [
+          "Entities - User"
+        ],
+        "summary": "List User records",
+        "operationId": "list_User",
+        "description": "Retrieve a list of User records with optional filtering, sorting, and pagination.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "JSON query filter, e.g. {\"status\":\"active\"}"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Maximum number of records to return"
+          },
+          {
+            "name": "skip",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            },
+            "description": "Number of records to skip (pagination)"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Field name to sort by. Prefix with '-' for descending order, e.g. -created_date"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entities - User"
+        ],
+        "summary": "Create a User record",
+        "operationId": "create_User",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "example": {
+                "email": "Example email",
+                "full_name": "Example full_name",
+                "role": "admin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entities/User/{User_id}": {
+      "get": {
+        "tags": [
+          "Entities - User"
+        ],
+        "summary": "Get a User record by ID",
+        "operationId": "get_User",
+        "parameters": [
+          {
+            "name": "User_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Entities - User"
+        ],
+        "summary": "Update a User record",
+        "operationId": "update_User",
+        "parameters": [
+          {
+            "name": "User_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Entities - User"
+        ],
+        "summary": "Delete a User record",
+        "operationId": "delete_User",
+        "description": "Soft-deletes the record. Use the restore endpoint to undo.",
+        "parameters": [
+          {
+            "name": "User_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Record ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletion result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "api_key",
+        "description": "Your API key. Obtain it from your user profile or via `User.me()` in the app SDK."
+      }
+    },
+    "schemas": {
+      "CoffeePrice": {
+        "type": "object",
+        "properties": {
+          "name_ar": {
+            "type": "string",
+            "description": "اسم صنف القهوة بالعربية"
+          },
+          "name_en": {
+            "type": "string",
+            "description": "اسم الصنف بالإنجليزية"
+          },
+          "coffee_type": {
+            "type": "string",
+            "enum": [
+              "green",
+              "roasted"
+            ],
+            "description": "نوع البن: أخضر أو محمص",
+            "default": "green"
+          },
+          "current_price": {
+            "type": "number",
+            "description": "السعر الحالي المعتمد"
+          },
+          "previous_price": {
+            "type": "number",
+            "description": "السعر السابق المحفوظ قبل آخر تحديث"
+          },
+          "currency": {
+            "type": "string",
+            "description": "عملة التسعير",
+            "default": "EGP"
+          },
+          "unit": {
+            "type": "string",
+            "description": "وحدة القياس",
+            "default": "كجم"
+          },
+          "source_ar": {
+            "type": "string",
+            "description": "مصدر السعر وطريقة وصفه بالعربية"
+          },
+          "source_en": {
+            "type": "string",
+            "description": "مصدر السعر بالإنجليزية"
+          },
+          "approved_by": {
+            "type": "string",
+            "description": "اسم المسؤول المعتمد للتحديث"
+          },
+          "last_updated": {
+            "type": "string",
+            "description": "تاريخ ووقت آخر تحديث معتمد",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique record identifier"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record creation timestamp"
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record last update timestamp"
+          },
+          "created_by_id": {
+            "type": "string",
+            "description": "ID of the user who created the record"
+          }
+        },
+        "required": [
+          "name_ar",
+          "current_price"
+        ],
+        "description": "CoffeePrice entity"
+      },
+      "PriceHistory": {
+        "type": "object",
+        "properties": {
+          "price_item_id": {
+            "type": "string",
+            "description": "معرّف صنف السعر المرتبط بجدول أسعار القهوة"
+          },
+          "price_name": {
+            "type": "string",
+            "description": "اسم الصنف وقت الاعتماد"
+          },
+          "coffee_type": {
+            "type": "string",
+            "enum": [
+              "green",
+              "roasted"
+            ],
+            "description": "نوع البن: أخضر أو محمص"
+          },
+          "old_price": {
+            "type": "number",
+            "description": "القيمة السابقة"
+          },
+          "new_price": {
+            "type": "number",
+            "description": "القيمة الجديدة"
+          },
+          "currency": {
+            "type": "string",
+            "description": "العملة",
+            "default": "EGP"
+          },
+          "unit": {
+            "type": "string",
+            "description": "وحدة القياس",
+            "default": "كجم"
+          },
+          "source": {
+            "type": "string",
+            "description": "مصدر البيانات المعتمد"
+          },
+          "approved_by": {
+            "type": "string",
+            "description": "حساب المسؤول الذي اعتمد التحديث"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique record identifier"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record creation timestamp"
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record last update timestamp"
+          },
+          "created_by_id": {
+            "type": "string",
+            "description": "ID of the user who created the record"
+          }
+        },
+        "required": [
+          "price_name",
+          "new_price"
+        ],
+        "description": "PriceHistory entity"
+      },
+      "CatalogItem": {
+        "type": "object",
+        "properties": {
+          "title_ar": {
+            "type": "string",
+            "description": "العنوان بالعربية"
+          },
+          "title_en": {
+            "type": "string",
+            "description": "العنوان بالإنجليزية"
+          },
+          "item_type": {
+            "type": "string",
+            "enum": [
+              "book",
+              "bundle",
+              "course"
+            ],
+            "description": "النوع: كتاب رقمي، المجموعة الكاملة، أو دورة تدريبية",
+            "default": "book"
+          },
+          "description_ar": {
+            "type": "string",
+            "description": "الوصف التفصيلي بالعربية"
+          },
+          "description_en": {
+            "type": "string",
+            "description": "الوصف التفصيلي بالإنجليزية"
+          },
+          "price": {
+            "type": "number",
+            "description": "السعر"
+          },
+          "currency": {
+            "type": "string",
+            "description": "العملة",
+            "default": "EGP"
+          },
+          "cover_image": {
+            "type": "string",
+            "description": "رابط صورة الغلاف"
+          },
+          "delivery_file_or_url": {
+            "type": "string",
+            "description": "رابط الملف الرقمي السري للكتاب أو رابط الوصول للدورة — لا يظهر إلا بعد تأكيد الدفع"
+          },
+          "course_schedule": {
+            "type": "string",
+            "description": "مواعيد الدورة وتفاصيل التسجيل (للدورات)"
+          },
+          "is_active": {
+            "type": "boolean",
+            "description": "حالة التفعيل",
+            "default": true
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique record identifier"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record creation timestamp"
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record last update timestamp"
+          },
+          "created_by_id": {
+            "type": "string",
+            "description": "ID of the user who created the record"
+          }
+        },
+        "required": [
+          "title_ar",
+          "price"
+        ],
+        "description": "CatalogItem entity"
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "order_number": {
+            "type": "string",
+            "description": "رقم طلب فريد ومميز"
+          },
+          "customer_name": {
+            "type": "string",
+            "description": "اسم العميل"
+          },
+          "customer_contact": {
+            "type": "string",
+            "description": "وسيلة التواصل: هاتف / واتساب / بريد إلكتروني"
+          },
+          "catalog_item_id": {
+            "type": "string",
+            "description": "معرّف المنتج المرتبط بجدول المكتبة الرقمية"
+          },
+          "item_title": {
+            "type": "string",
+            "description": "اسم الكتاب أو المجموعة أو الدورة"
+          },
+          "quantity": {
+            "type": "number",
+            "description": "الكمية",
+            "default": 1
+          },
+          "total_price": {
+            "type": "number",
+            "description": "السعر الإجمالي"
+          },
+          "currency": {
+            "type": "string",
+            "description": "العملة",
+            "default": "EGP"
+          },
+          "payment_method": {
+            "type": "string",
+            "enum": [
+              "instapay",
+              "vodafone_cash",
+              "bank_transfer",
+              "other"
+            ],
+            "description": "طريقة الدفع المختارة"
+          },
+          "receipt_image_url": {
+            "type": "string",
+            "description": "ملف صورة إيصال التحويل أو إثبات الدفع"
+          },
+          "payment_status": {
+            "type": "string",
+            "enum": [
+              "unpaid",
+              "under_review",
+              "paid"
+            ],
+            "description": "حالة الدفع",
+            "default": "unpaid"
+          },
+          "order_status": {
+            "type": "string",
+            "enum": [
+              "new",
+              "under_review",
+              "paid",
+              "completed",
+              "cancelled"
+            ],
+            "description": "حالة الطلب",
+            "default": "new"
+          },
+          "admin_notes": {
+            "type": "string",
+            "description": "ملاحظات الإدارة وسجل المراجعة"
+          },
+          "approved_by": {
+            "type": "string",
+            "description": "اسم المسؤول الذي اعتمد الدفع"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique record identifier"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record creation timestamp"
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record last update timestamp"
+          },
+          "created_by_id": {
+            "type": "string",
+            "description": "ID of the user who created the record"
+          }
+        },
+        "required": [
+          "customer_name",
+          "customer_contact"
+        ],
+        "description": "Order entity"
+      },
+      "CoffeeBean": {
+        "type": "object",
+        "properties": {
+          "name_ar": {
+            "type": "string",
+            "description": "اسم البن أو المنشأ التجاري بالعربية"
+          },
+          "name_en": {
+            "type": "string",
+            "description": "اسم البن أو المنشأ بالإنجليزية"
+          },
+          "country_ar": {
+            "type": "string",
+            "description": "بلد المنشأ بالعربية"
+          },
+          "country_en": {
+            "type": "string",
+            "description": "بلد المنشأ بالإنجليزية"
+          },
+          "species": {
+            "type": "string",
+            "enum": [
+              "arabica",
+              "robusta",
+              "hybrid"
+            ],
+            "description": "الصنف: أرابيكا، روبوستا، أو هجين",
+            "default": "arabica"
+          },
+          "processing_ar": {
+            "type": "string",
+            "description": "طريقة المعالجة بالعربية: مجفف، مغسول، عسلي، لاهوائي..."
+          },
+          "processing_en": {
+            "type": "string",
+            "description": "طريقة المعالجة بالإنجليزية"
+          },
+          "sensory_profile_ar": {
+            "type": "string",
+            "description": "الخصائص الحسية والإيحاءات بالعربية"
+          },
+          "recommended_roast_ar": {
+            "type": "string",
+            "description": "درجات التحميص المناسبة بالعربية"
+          },
+          "commercial_traits_ar": {
+            "type": "string",
+            "description": "الخصائص التجارية واستخداماته في السوق"
+          },
+          "image_url": {
+            "type": "string",
+            "description": "صورة الحبوب أو المنشأ"
+          },
+          "is_published": {
+            "type": "boolean",
+            "description": "حالة الظهور في الموقع: منشور أو مخفي",
+            "default": true
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique record identifier"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record creation timestamp"
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record last update timestamp"
+          },
+          "created_by_id": {
+            "type": "string",
+            "description": "ID of the user who created the record"
+          }
+        },
+        "required": [
+          "name_ar",
+          "country_ar"
+        ],
+        "description": "CoffeeBean entity"
+      },
+      "CoffeeBlend": {
+        "type": "object",
+        "properties": {
+          "blend_number": {
+            "type": "number",
+            "description": "رقم التوليفة من 1 إلى 50"
+          },
+          "name_ar": {
+            "type": "string",
+            "description": "اسم التوليفة بالعربية"
+          },
+          "name_en": {
+            "type": "string",
+            "description": "اسم التوليفة بالإنجليزية"
+          },
+          "category_ar": {
+            "type": "string",
+            "description": "تصنيف التوليفة: إسبريسو، قهوة تركي، فلتر، تجاري..."
+          },
+          "components": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "مصفوفة المكونات: كل مكوّن يحتوي على اسم نوع البن bean_name والنسبة المئوية percentage"
+          },
+          "total_percentage": {
+            "type": "number",
+            "description": "مجموع النسب المئوية ويجب أن يساوي 100"
+          },
+          "characteristics_ar": {
+            "type": "string",
+            "description": "خصائص التوليفة الحسية والنتيجة في الكوب"
+          },
+          "roast_notes_ar": {
+            "type": "string",
+            "description": "توصيات التحميص والدمج"
+          },
+          "is_published": {
+            "type": "boolean",
+            "description": "حالة الظهور: منشور أو مخفي",
+            "default": true
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique record identifier"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record creation timestamp"
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record last update timestamp"
+          },
+          "created_by_id": {
+            "type": "string",
+            "description": "ID of the user who created the record"
+          }
+        },
+        "required": [
+          "name_ar",
+          "blend_number"
+        ],
+        "description": "CoffeeBlend entity"
+      },
+      "ArticleCategory": {
+        "type": "object",
+        "properties": {
+          "name_ar": {
+            "type": "string",
+            "description": "اسم القسم بالعربية"
+          },
+          "name_en": {
+            "type": "string",
+            "description": "اسم القسم بالإنجليزية"
+          },
+          "slug": {
+            "type": "string",
+            "description": "الرابط المخصص للقسم"
+          },
+          "description_ar": {
+            "type": "string",
+            "description": "وصف القسم"
+          },
+          "sort_order": {
+            "type": "number",
+            "description": "ترتيب الظهور من 1 إلى 7"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique record identifier"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record creation timestamp"
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record last update timestamp"
+          },
+          "created_by_id": {
+            "type": "string",
+            "description": "ID of the user who created the record"
+          }
+        },
+        "required": [
+          "name_ar"
+        ],
+        "description": "ArticleCategory entity"
+      },
+      "Article": {
+        "type": "object",
+        "properties": {
+          "title_ar": {
+            "type": "string",
+            "description": "عنوان المقال بالعربية"
+          },
+          "title_en": {
+            "type": "string",
+            "description": "عنوان المقال بالإنجليزية"
+          },
+          "slug": {
+            "type": "string",
+            "description": "الرابط الدائم للمقال (URL Slug) وفريد"
+          },
+          "category_id": {
+            "type": "string",
+            "description": "معرّف القسم المرتبط من جدول أقسام المقالات"
+          },
+          "category_name": {
+            "type": "string",
+            "description": "اسم القسم"
+          },
+          "summary_ar": {
+            "type": "string",
+            "description": "الوصف المختصر للمقال"
+          },
+          "content_ar": {
+            "type": "string",
+            "description": "المحتوى الكامل للمقال بالعربية بصيغة HTML منسقة"
+          },
+          "content_en": {
+            "type": "string",
+            "description": "المحتوى بالإنجليزية (اختياري)"
+          },
+          "cover_image": {
+            "type": "string",
+            "description": "الصورة البارزة للمقال"
+          },
+          "related_beans": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "معرّفات أنواع البن المرتبطة بالمقال للربط الداخلي"
+          },
+          "related_blends": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "معرّفات التوليفات المرتبطة بالمقال للربط الداخلي"
+          },
+          "seo_title": {
+            "type": "string",
+            "description": "عنوان الصفحة لمحركات البحث Meta Title"
+          },
+          "seo_description": {
+            "type": "string",
+            "description": "الوصف التعريفي لمحركات البحث Meta Description"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "published"
+            ],
+            "description": "حالة المقال: مسودة أو منشور",
+            "default": "draft"
+          },
+          "publish_date": {
+            "type": "string",
+            "description": "تاريخ النشر والتحديث",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique record identifier"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record creation timestamp"
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record last update timestamp"
+          },
+          "created_by_id": {
+            "type": "string",
+            "description": "ID of the user who created the record"
+          }
+        },
+        "required": [
+          "title_ar"
+        ],
+        "description": "Article entity"
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "The email of the user"
+          },
+          "full_name": {
+            "type": "string",
+            "description": "The full name of the user"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "user"
+            ],
+            "description": "The role of the user in the app"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique record identifier"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record creation timestamp"
+          },
+          "updated_date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Record last update timestamp"
+          },
+          "created_by_id": {
+            "type": "string",
+            "description": "ID of the user who created the record"
+          }
+        },
+        "required": [
+          "role",
+          "full_name",
+          "email"
+        ],
+        "description": "User entity"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Entities - CoffeePrice",
+      "description": "CRUD operations for CoffeePrice records"
+    },
+    {
+      "name": "Entities - PriceHistory",
+      "description": "CRUD operations for PriceHistory records"
+    },
+    {
+      "name": "Entities - CatalogItem",
+      "description": "CRUD operations for CatalogItem records"
+    },
+    {
+      "name": "Entities - Order",
+      "description": "CRUD operations for Order records"
+    },
+    {
+      "name": "Entities - CoffeeBean",
+      "description": "CRUD operations for CoffeeBean records"
+    },
+    {
+      "name": "Entities - CoffeeBlend",
+      "description": "CRUD operations for CoffeeBlend records"
+    },
+    {
+      "name": "Entities - ArticleCategory",
+      "description": "CRUD operations for ArticleCategory records"
+    },
+    {
+      "name": "Entities - Article",
+      "description": "CRUD operations for Article records"
+    },
+    {
+      "name": "Entities - User",
+      "description": "CRUD operations for User records"
+    }
+  ]
+}

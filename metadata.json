@@ -1,0 +1,6 @@
+{
+  "name": "تجارة القهوة المصرية | Egyptian Coffee Trade",
+  "description": "المنصة المرجعية الأولى لتجارة وصناعة وتحميص القهوة في مصر (egcoffee.pro) — أسعار البن المرجعية، حاسبة ومحلل التوليفات بالذكاء الاصطناعي، المكتبة الرقمية، وموسوعة البن والتوليفات.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
